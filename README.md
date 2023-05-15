@@ -9,20 +9,18 @@
 
 ## About Test API
 
-Тестовое задание бекенд (middle)
+php artisan migrate - выполняет миграции базы данных. Миграции - это способ версионирования базы данных и контроля изменений в ней.
 
-php artisan migrate
+php artisan db:seed - заполняет базу данных тестовыми данными с помощью сидов. Сиды - это способ создания фиктивных данных для тестирования приложения.
 
-php artisan db:seed
+composer require darkaonline/l5-swagger - устанавливает пакет Swagger для Laravel. Swagger - это инструмент для создания документации API.
 
-composer require darkaonline/l5-swagger
+php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider" - публикует конфигурационные файлы Swagger, которые можно настроить для вашего приложения.
 
-php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+php artisan l5-swagger:generate - генерирует документацию API Swagger на основе аннотаций, которые вы добавили в свой код.
 
-php artisan l5-swagger:generate
+php artisan app:assign-driver-command - выполняет команду для назначения водителя, который будет управлять вашим приложением.
 
-php artisan app:assign-driver-command
+php artisan optimize - оптимизирует ваше приложение для ускорения работы.
 
-php artisan optimize
-
-php artisan serve
+php artisan serve - запускает локальный сервер для запуска вашего приложения. После выполнения этой команды вы сможете открыть ваше приложение в браузере по адресу http://localhost:8000.
