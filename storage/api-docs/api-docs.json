@@ -1,0 +1,516 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Тестовое задание",
+        "description": "Разработчик: Абдуазимов Бунёд.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/user-login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Авторизации пользователя",
+                "description": "Вход по электронной почте, пароль",
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "bunyod@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Успешная операция",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Успешная операция",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Необрабатываемый объект",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Неверный запрос"
+                    },
+                    "404": {
+                        "description": "Ресурс не найден"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/user-register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Регистрация пользователя",
+                "description": "Регистрация пользователя",
+                "operationId": "register",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "email",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "type": "text"
+                                    },
+                                    "last_name": {
+                                        "type": "text"
+                                    },
+                                    "email": {
+                                        "type": "text"
+                                    },
+                                    "password": {
+                                        "type": "password"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Успешная операция",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Успешная операция",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Необрабатываемый объект",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Неверный запрос"
+                    },
+                    "404": {
+                        "description": "Ресурс не найден"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/driver-register": {
+            "post": {
+                "tags": [
+                    "Driver"
+                ],
+                "summary": "Регистрация водителя",
+                "description": "Регистрация водителя",
+                "operationId": "registerDriver",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "longitude",
+                                    "latitude",
+                                    "balance",
+                                    "rating",
+                                    "status",
+                                    "login",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "type": "text"
+                                    },
+                                    "last_name": {
+                                        "type": "text"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "format": "double",
+                                        "example": "69.6288"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "format": "double",
+                                        "example": "40.2862"
+                                    },
+                                    "balance": {
+                                        "type": "number",
+                                        "format": "double",
+                                        "example": "0.00"
+                                    },
+                                    "rating": {
+                                        "type": "number",
+                                        "format": "double",
+                                        "maximum": 0.99,
+                                        "minimum": 0,
+                                        "example": "0.00"
+                                    },
+                                    "status": {
+                                        "type": "text",
+                                        "enum": [
+                                            "активен",
+                                            "не активен"
+                                        ],
+                                        "example": "активен"
+                                    },
+                                    "login": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "password"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Успешная операция",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Успешная операция",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Необрабатываемый объект",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Неверный запрос"
+                    },
+                    "404": {
+                        "description": "Ресурс не найден"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/driver-balance/{id}": {
+            "get": {
+                "tags": [
+                    "Driver"
+                ],
+                "summary": "Получить баланс водителя",
+                "operationId": "2afbc7d7c7f4a1cb7561047ac038ff66",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор водителя",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный запрос",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "balance": {
+                                            "type": "number",
+                                            "format": "double",
+                                            "example": 100.5
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Неавторизованный доступ"
+                    },
+                    "404": {
+                        "description": "Водитель не найден"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/company-balance/{id}": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Получить баланс компании",
+                "operationId": "ac0f6fee1ea8ca15fdbd5bbf06fce52c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор компании",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный запрос"
+                    },
+                    "401": {
+                        "description": "Неавторизованный доступ"
+                    },
+                    "404": {
+                        "description": "Компания не найдена"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/orders/{id}/status": {
+            "put": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Обновить статус заказа",
+                "description": "Обновляет статус указанного заказа.",
+                "operationId": "updateOrderStatus ",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID заказа",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Статус заказа",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "водитель на месте",
+                                "исполняется"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешное обновление статуса заказа",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Статус заказа успешно обновлен"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Ошибка при обновлении статуса заказа",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Некорректный ID заказа или статус"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/orders-complate/{id}": {
+            "put": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Завершить заказ",
+                "description": "Завершает заказ и обновляет балансы водителя и компании.",
+                "operationId": "completeOrder",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID заказа",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Заказ успешно завершен",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Заказ успешно завершен"
+                                        },
+                                        "driver_balance": {
+                                            "type": "number",
+                                            "format": "double",
+                                            "example": "150.50"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Ошибка при завершении заказа",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Некорректный заказ или водитель не выбран"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "http",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
