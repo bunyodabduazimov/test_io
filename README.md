@@ -8,7 +8,7 @@ php artisan migrate - выполняет миграции базы данных.
 
 php artisan db:seed - заполняет базу данных тестовыми данными с помощью seeder. 
 
-php artisan l5-swagger:generate - генерирует документацию API Swagger на основе аннотаций, которые вы добавили в свой код.  
+php artisan l5-swagger:generate - генерирует документацию API Swagger на основе аннотаций.  
 
 php artisan app:assign-driver-command - выполняет команду для назначения водителя.
 
