@@ -2,13 +2,11 @@
 
 ## About Test API
 
+composer update
+
 php artisan migrate - выполняет миграции базы данных. 
 
 php artisan db:seed - заполняет базу данных тестовыми данными с помощью seeder. 
-
-composer require darkaonline/l5-swagger - устанавливает пакет Swagger для Laravel. 
-
-php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider" - публикует конфигурационные файлы Swagger, которые можно настроить для вашего приложения. 
 
 php artisan l5-swagger:generate - генерирует документацию API Swagger на основе аннотаций, которые вы добавили в свой код.  
 
